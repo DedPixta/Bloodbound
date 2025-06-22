@@ -3,6 +3,7 @@
 #base "units/npc_dota_custom_dummy_unit.txt"
 #base "units/npc_dota_custom_illusion_base.txt"
 #base "units/npc_dota_miniboss_custom.txt"
+#base "units/npc_dota_custom_kobold.txt"
 
 "DOTAUnits"
 {
