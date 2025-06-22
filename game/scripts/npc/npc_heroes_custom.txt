@@ -2,7 +2,7 @@
 // the specified key-value combinations.  Use override_hero <hero_to_override> for this.
 // Tutorial how to use #base:
 // https://moddota.com/tools/combining-kv-files-using-base
-//#base "heroes/chaos_knight.txt"
+#base "heroes/chaos_knight.txt"
 
 "DOTAHeroes"
 {
