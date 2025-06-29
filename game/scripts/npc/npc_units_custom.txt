@@ -1,9 +1,14 @@
-// Tutorial how to use #base:
-// https://moddota.com/tools/combining-kv-files-using-base
-#base "units/npc_dota_custom_dummy_unit.txt"
-#base "units/npc_dota_custom_illusion_base.txt"
-#base "units/npc_dota_miniboss_custom.txt"
+// #base "units/npc_dota_custom_dummy_unit.txt"
+// #base "units/npc_dota_custom_illusion_base.txt"
+// #base "units/npc_dota_miniboss_custom.txt"
 #base "units/npc_dota_custom_kobold.txt"
+#base "units/npc_dota_custom_gnoll_assassin.txt"
+#base "units/npc_dota_custom_neutral_forest_troll_berserker.txt"
+#base "units/npc_dota_custom_neutral_forest_troll_high_priest.txt"
+#base "units/npc_dota_custom_neutral_ogre_magi.txt"
+#base "units/npc_dota_custom_neutral_ogre_mauler.txt"
+#base "units/npc_dota_custom_neutral_giant_wolf.txt"
+#base "units/npc_dota_custom_neutral_alpha_wolf.txt"
 
 "DOTAUnits"
 {

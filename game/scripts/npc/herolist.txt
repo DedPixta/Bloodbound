@@ -3,10 +3,11 @@
 
 "CustomHeroList"
 {
-	"npc_dota_hero_alchemist" 			"1"
-	"npc_dota_hero_axe" 				"1"
-	"npc_dota_hero_sniper" 				"1"
-	"npc_dota_hero_zuus" 				"1"
-	"npc_dota_hero_chaos_knight" 		"1"
-	"npc_dota_hero_phantom_assassin" 	"1"
+    "npc_dota_hero_alchemist"          "1"
+    "npc_dota_hero_axe"                "1"
+    "npc_dota_hero_sniper"             "1"
+    "npc_dota_hero_zuus"               "1"
+    "npc_dota_hero_chaos_knight"       "1"
+    "npc_dota_hero_phantom_assassin"   "1"
+    "npc_dota_hero_ancient_apparition" "1"
 }

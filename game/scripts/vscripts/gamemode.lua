@@ -74,7 +74,7 @@ function barebones:InitGameMode()
 	GameRules:SetHeroRespawnEnabled(ENABLE_HERO_RESPAWN)
 
 	GameRules:SetHeroSelectionTime(HERO_SELECTION_TIME) -- THIS IS IGNORED when "EnablePickRules" is "1" in 'addoninfo.txt' !
-	GameRules:SetHeroSelectPenaltyTime(HERO_SELECTION_PENALTY_TIME)
+	-- GameRules:SetHeroSelectPenaltyTime(HERO_SELECTION_PENALTY_TIME)
 
 	GameRules:SetPreGameTime(PRE_GAME_TIME)
 	GameRules:SetPostGameTime(POST_GAME_TIME)
