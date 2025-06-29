@@ -10,7 +10,7 @@
         "Level"                  "1"
         "ModelScale"             ".9"
         "IsNeutralUnitType"      "1"
-        "UnitLabel"              "wave_unit"		// txt
+        "UnitLabel"              "wave_unit"		// group label
         
         // Abilities
         //----------------------------------------------------------------
