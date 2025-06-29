@@ -1,20 +1,20 @@
 -- This is the entry-point to your game mode and should be used primarily to precache models/particles/sounds/etc
 
 -- Creating a global gamemode class variable;
-if barebones == nil then
-	_G.barebones = class({})
+if bloodbound == nil then
+	_G.bloodbound = class({})
 else
-	DebugPrint("[BAREBONES] barebones class name is already in use, change the name if this is the first time you launch the game!")
+	DebugPrint("[BAREBONES] bloodbound class name is already in use, change the name if this is the first time you launch the game!")
 	DebugPrint("[BAREBONES] If this is not your first time, you probably used script_reload in console.")
 end
 
 require('util')
-require('libraries/timers')                      -- Core lua library
-require('libraries/player_resource')             -- Core lua library
-require('gamemode')                              -- Core barebones file
+require('libraries/timers')          -- Core lua library
+require('libraries/player_resource') -- Core lua library
+require('core.init')                 -- Core bloodbound file
 
 function Precache(context)
---[[
+	--[[
   This function is used to precache resources/units/items/abilities that will be needed
   for sure in your game and that will not be precached by hero selection.  When a hero
   is selected from the hero selection screen, the game will precache that hero's assets,
@@ -59,5 +59,5 @@ end
 function Activate()
 	DebugPrint("[BAREBONES] Activating ...")
 	print("Your custom game is activating.")
-	barebones:InitGameMode()
+	bloodbound:InitGameMode()
 end

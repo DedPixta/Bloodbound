@@ -39,7 +39,7 @@ BUYBACK_FIXED_GOLD_COST = 500            -- Fixed custom buyback gold cost (need
 CUSTOM_SCAN_COOLDOWN = 210               -- Custom cooldown of Scan in seconds. Doesn't affect Scan's starting cooldown!
 CUSTOM_GLYPH_COOLDOWN = 300              -- Custom cooldown of Glyph in seconds. Doesn't affect Glyph's starting cooldown!
 
-DISABLE_FOG_OF_WAR_ENTIRELY = false      -- Should we disable fog of war entirely for both teams?
+DISABLE_FOG_OF_WAR_ENTIRELY = true      -- Should we disable fog of war entirely for both teams?
 USE_UNSEEN_FOG_OF_WAR = false            -- Should we make unseen and fogged areas of the map completely black until uncovered by each team?
 -- NOTE: DISABLE_FOG_OF_WAR_ENTIRELY must be false for USE_UNSEEN_FOG_OF_WAR to work
 USE_STANDARD_DOTA_BOT_THINKING = false   -- Should we have bots act like they would in Dota? (This requires 3 lanes, vanilla items, vanilla heroes etc)
@@ -149,7 +149,7 @@ ENABLED_RUNES[DOTA_RUNE_INVISIBILITY]        = true
 ENABLED_RUNES[DOTA_RUNE_REGENERATION]        = true
 ENABLED_RUNES[DOTA_RUNE_ARCANE]              = true             -- BUGGED! NEVER SPAWNS!
 
-MAX_NUMBER_OF_TEAMS                          = 2                -- How many potential teams can be in this game mode?
+MAX_NUMBER_OF_TEAMS                          = 1                -- How many potential teams can be in this game mode?
 USE_CUSTOM_TEAM_COLORS                       = false            -- Should we use custom team colors?
 USE_CUSTOM_TEAM_COLORS_FOR_PLAYERS           = false            -- Should we use custom team colors to color the players/minimap?
 
@@ -168,8 +168,8 @@ TEAM_COLORS[DOTA_TEAM_CUSTOM_8]              = { 140, 42, 244 } --    Purple
 USE_AUTOMATIC_PLAYERS_PER_TEAM               = true             -- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 
 CUSTOM_TEAM_PLAYER_COUNT                     = {}               -- If we're not automatically setting the number of players per team, use this table
-CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 5                -- you need to set this for each map if maps have a different max number of players per team
-CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 5                -- you need to set this for each map if maps have a different max number of players
+CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 4                -- you need to set this for each map if maps have a different max number of players per team
+CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 0                -- you need to set this for each map if maps have a different max number of players
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_1] = 0
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_2] = 0
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_3] = 0
