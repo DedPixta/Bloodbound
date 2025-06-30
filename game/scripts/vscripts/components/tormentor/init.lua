@@ -5,7 +5,7 @@
 if not Tormentors then
 	Tormentors = class({})
 
-	require("components/tormentor/events")
+	require('components/tormentor/events')
 
 	Tormentors.spawnLocation = {}
 	Tormentors.vanillaSpawnerName = {}
