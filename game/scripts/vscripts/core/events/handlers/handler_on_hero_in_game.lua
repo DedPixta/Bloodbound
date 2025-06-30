@@ -1,17 +1,14 @@
 --[[
-  Hero spawned for the first time. It can happen if the player's hero is replaced with a new hero for any reason.  
+  Hero spawned for the first time. It can happen if the player's hero is replaced with a new hero for any reason.
   This can be used for initializing heroes, such as adding levels, changing the starting gold, removing/adding abilities, adding physics, etc.
   This happens to bot and custom created heroes as well.
   The hero parameter is the hero entity that just spawned.
-  
+
 ]]
 function bloodbound:OnHeroInGame(hero)
 	-- Innate abilities like Earth Spirit Stone Remnant (abilities that a hero needs to have auto-leveled up at the start of the game)
 	-- Take a look at this guide: https://moddota.com/abilities/creating-innate-abilities
-	local innate_abilities = {
-		"innate_ability1",
-		"innate_ability2"
-	}
+	local innate_abilities = { "innate_ability1", "innate_ability2" }
 
 	-- Cycle through any innate abilities found, then set their level to 1
 	for i = 1, #innate_abilities do
@@ -22,11 +19,11 @@ function bloodbound:OnHeroInGame(hero)
 	end
 
 	Timers:CreateTimer(0.5, function()
-		local playerID = hero:GetPlayerID()	-- never nil (-1 by default), needs delay 1 or more frames
+		local playerID = hero:GetPlayerID() -- never nil (-1 by default), needs delay 1 or more frames
 
 		if PlayerResource:IsFakeClient(playerID) then
 			-- This is happening only for bots
-			DebugPrint("[DEBUG] OnHeroInGame - Bot hero "..hero:GetUnitName().." (re)spawned in the game.")
+			DebugPrint("[DEBUG] OnHeroInGame - Bot hero " .. hero:GetUnitName() .. " (re)spawned in the game.")
 			-- Set starting gold for bots
 			hero:SetGold(NORMAL_START_GOLD, false)
 		else
@@ -52,17 +49,17 @@ function bloodbound:OnHeroInGame(hero)
 				-- This is happening only when players create new heroes or replace them
 			else
 				-- This is happening for players when their primary hero spawns for the first time
-				DebugPrint("[DEBUG] OnHeroInGame - Hero "..hero:GetUnitName().." spawned in the game for the first time for the player with ID: "..playerID)
+				DebugPrint("[DEBUG] OnHeroInGame - Hero " .. hero:GetUnitName() .. " spawned in the game for the first time for the player with ID: " .. playerID)
 
 				-- Make heroes briefly visible on spawn (to prevent bad fog of war interactions)
 				hero:MakeVisibleToTeam(DOTA_TEAM_GOODGUYS, 0.5)
 				hero:MakeVisibleToTeam(DOTA_TEAM_BADGUYS, 0.5)
 
-				-- Set the starting gold for the player's hero 
+				-- Set the starting gold for the player's hero
 				-- Use 'PlayerResource:ModifyGold(playerID, NORMAL_START_GOLD-600, false, 0)' if GameRules:SetStartingGold breaks again
 				-- If the NORMAL_START_GOLD is less than 600, disable Strategy Time and use 'hero:SetGold(NORMAL_START_GOLD, false)' instead
 				-- Why? Because OnHeroInGame is triggering during PreGame (after Strategy Time) and players can buy items during Strategy Time (starting gold will remain default 600)
-				
+
 				if ADDITIONAL_GPM then
 					hero:AddNewModifier(hero, nil, "modifier_custom_passive_gold", {})
 				end
@@ -74,11 +71,10 @@ function bloodbound:OnHeroInGame(hero)
 				end
 
 				-- Make sure that stuff above will not happen again for the player if some other hero spawns
-				-- for him for the first time during the game 
+				-- for him for the first time during the game
 				PlayerResource.PlayerData[playerID].already_set_hero = true
-				DebugPrint("[DEBUG] OnHeroInGame - Hero "..hero:GetUnitName().." set for the player with ID: "..playerID)
+				DebugPrint("[DEBUG] OnHeroInGame - Hero " .. hero:GetUnitName() .. " set for the player with ID: " .. playerID)
 			end
 		end
 	end)
 end
-

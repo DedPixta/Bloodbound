@@ -5,7 +5,7 @@ function bloodbound:OnPlayerLevelUp(keys)
 	local level = keys.level
 	local playerID = keys.player_id or keys.PlayerID
 
-	local hero 
+	local hero
 	if keys.hero_entindex then
 		hero = EntIndexToHScript(keys.hero_entindex)
 	else
@@ -20,9 +20,9 @@ function bloodbound:OnPlayerLevelUp(keys)
 
 			local gold_bounty
 			if hero_streak > 2 then
-				gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + (hero_streak-2)*HERO_KILL_GOLD_PER_STREAK
+				gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL + (hero_streak - 2) * HERO_KILL_GOLD_PER_STREAK
 			else
-				gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL
+				gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL
 			end
 
 			hero:SetMinimumGoldBounty(gold_bounty)

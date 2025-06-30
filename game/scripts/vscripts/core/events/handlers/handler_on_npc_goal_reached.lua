@@ -3,9 +3,9 @@ function bloodbound:OnNPCGoalReached(keys)
 	--DebugPrint("[DEBUG] OnNPCGoalReached")
 	--PrintTable(keys)
 
-	local goal_entity_index = keys.goal_entindex             -- Entity index of the next goal entity on the path (if any) which the npc will now be pathing towards
-	local next_goal_entity_index = keys.next_goal_entindex   -- Entity index of the path goal entity which has been reached
-	local npc_index = keys.npc_entindex                      -- Entity index of the npc which was following a path and has reached a goal entity
+	local goal_entity_index = keys.goal_entindex        -- Entity index of the next goal entity on the path (if any) which the npc will now be pathing towards
+	local next_goal_entity_index = keys.next_goal_entindex -- Entity index of the path goal entity which has been reached
+	local npc_index = keys.npc_entindex                 -- Entity index of the npc which was following a path and has reached a goal entity
 
 	local npc
 	local goal_entity

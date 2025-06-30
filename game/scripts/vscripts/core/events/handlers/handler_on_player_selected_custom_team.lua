@@ -1,4 +1,4 @@
--- This function is called whenever a player changes their custom team selection during Custom Game Setup 
+-- This function is called whenever a player changes their custom team selection during Custom Game Setup
 function bloodbound:OnPlayerSelectedCustomTeam(keys)
 	DebugPrint("[DEBUG] OnPlayerSelectedCustomTeam event")
 	--PrintTable(keys)

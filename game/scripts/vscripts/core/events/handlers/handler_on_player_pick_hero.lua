@@ -26,7 +26,7 @@ function bloodbound:OnPlayerPickHero(keys)
 			end
 			if PlayerResource.PlayerData[playerID].already_assigned_hero == true then
 				-- This is happening only when players create new heroes or replacing heroes
-				DebugPrint("[DEBUG] OnPlayerPickHero - Player with playerID "..playerID.." got another hero: "..hero_entity:GetUnitName())
+				DebugPrint("[DEBUG] OnPlayerPickHero - Player with playerID " .. playerID .. " got another hero: " .. hero_entity:GetUnitName())
 			else
 				PlayerResource:AssignHero(playerID, hero_entity)
 				PlayerResource.PlayerData[playerID].already_assigned_hero = true

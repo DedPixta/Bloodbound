@@ -1,41 +1,41 @@
 function bloodbound:OnEntityKilled(keys)
-    --DebugPrint("[DEBUG] An entity was killed.")
-    --PrintTable(keys)
+	--DebugPrint("[DEBUG] An entity was killed.")
+	--PrintTable(keys)
 
-    -- Indexes:
-    local killed_entity_index = keys.entindex_killed
-    local attacker_entity_index = keys.entindex_attacker
-    local inflictor_index = keys.entindex_inflictor -- it can be nil if not killed by an item/ability
+	-- Indexes:
+	local killed_entity_index = keys.entindex_killed
+	local attacker_entity_index = keys.entindex_attacker
+	local inflictor_index = keys.entindex_inflictor -- it can be nil if not killed by an item/ability
 
-    -- Find the entity that was killed
-    local killed_unit
-    if killed_entity_index then
-      killed_unit = EntIndexToHScript(killed_entity_index)
-    end
+	-- Find the entity that was killed
+	local killed_unit
+	if killed_entity_index then
+		killed_unit = EntIndexToHScript(killed_entity_index)
+	end
 
-    -- Find the entity (killer) that killed the entity mentioned above
-    local killer_unit
-    if attacker_entity_index then
-      killer_unit = EntIndexToHScript(attacker_entity_index)
-    end
+	-- Find the entity (killer) that killed the entity mentioned above
+	local killer_unit
+	if attacker_entity_index then
+		killer_unit = EntIndexToHScript(attacker_entity_index)
+	end
 
-    if killed_unit == nil or killer_unit == nil then
-      -- Don't continue if killer or killed entity doesn't exist
-      return
-    end
+	if killed_unit == nil or killer_unit == nil then
+		-- Don't continue if killer or killed entity doesn't exist
+		return
+	end
 
 	-- Find the ability/item used to kill, or nil if not killed by an item/ability
-    local killing_ability
-    if inflictor_index then
-      killing_ability = EntIndexToHScript(inflictor_index)
-    end
+	local killing_ability
+	if inflictor_index then
+		killing_ability = EntIndexToHScript(inflictor_index)
+	end
 
-    -- For Meepo clones, find the original
-    if killed_unit:IsClone() then
-      if killed_unit.GetCloneSource and killed_unit:GetCloneSource() then
-        killed_unit = killed_unit:GetCloneSource()
-      end
-    end
+	-- For Meepo clones, find the original
+	if killed_unit:IsClone() then
+		if killed_unit.GetCloneSource and killed_unit:GetCloneSource() then
+			killed_unit = killed_unit:GetCloneSource()
+		end
+	end
 
 	-- Killed Unit is a hero (not an illusion) and he is not reincarnating
 	if killed_unit:IsRealHero() and not killed_unit:IsTempestDouble() and not killed_unit:IsReincarnating() and not killed_unit:IsSpiritBearCustom() then
@@ -49,9 +49,9 @@ function bloodbound:OnEntityKilled(keys)
 				-- Adjust Gold bounty
 				local gold_bounty
 				if hero_streak > 2 then
-					gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + (hero_streak-2)*HERO_KILL_GOLD_PER_STREAK
+					gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL + (hero_streak - 2) * HERO_KILL_GOLD_PER_STREAK
 				else
-					gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL
+					gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL
 				end
 
 				killer_unit:SetMinimumGoldBounty(gold_bounty)
@@ -71,37 +71,37 @@ function bloodbound:OnEntityKilled(keys)
 			else
 				-- Get dota default respawn time
 				respawn_time = killed_unit:GetRespawnTime()
-				DebugPrint("[DEBUG] OnEntityKilled - Default respawn time for "..killed_unit:GetUnitName().." is "..respawn_time.." seconds.")
+				DebugPrint("[DEBUG] OnEntityKilled - Default respawn time for " .. killed_unit:GetUnitName() .. " is " .. respawn_time .. " seconds.")
 			end
 
 			-- Fixing respawn time after level 30, this is usually bugged in custom games if default respawn times are used -> respawn time are either too long or too short. We fix that.
-			local respawn_time_after_30 = 100 + (killed_unit_level-30)*5
+			local respawn_time_after_30 = 100 + (killed_unit_level - 30) * 5
 			if killed_unit_level > 30 and respawn_time ~= respawn_time_after_30 and not USE_CUSTOM_RESPAWN_TIMES then
 				respawn_time = respawn_time_after_30
 			end
 
 			-- Old Bloodstone respawn reduction (this example doesn't check items in backpack because bloodstone cannot go in backpack)
 			-- for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-				-- local item = killed_unit:GetItemInSlot(i)
-				-- if item then
-					-- if item:GetName() == "item_bloodstone" then
-						-- local current_charges = item:GetCurrentCharges()
-						-- local charges_before_death = math.ceil(current_charges*1.5)
-						-- local reduction_per_charge = item:GetLevelSpecialValueFor("respawn_time_reduction", item:GetLevel() - 1)
-						-- local respawn_reduction = charges_before_death*reduction_per_charge
-						-- respawn_time = math.max(1, respawn_time-respawn_reduction)
-						-- break -- break 'for' loop, to prevent multiple bloodstones granting respawn reduction
-					-- end
-				-- end
+			-- local item = killed_unit:GetItemInSlot(i)
+			-- if item then
+			-- if item:GetName() == "item_bloodstone" then
+			-- local current_charges = item:GetCurrentCharges()
+			-- local charges_before_death = math.ceil(current_charges*1.5)
+			-- local reduction_per_charge = item:GetLevelSpecialValueFor("respawn_time_reduction", item:GetLevel() - 1)
+			-- local respawn_reduction = charges_before_death*reduction_per_charge
+			-- respawn_time = math.max(1, respawn_time-respawn_reduction)
+			-- break -- break 'for' loop, to prevent multiple bloodstones granting respawn reduction
+			-- end
+			-- end
 			-- end
 
 			-- Old Reaper's Scythe respawn time increase
 			-- if killing_ability then
-				-- if killing_ability:GetAbilityName() == "necrolyte_reapers_scythe" then
-					-- DebugPrint("[DEBUG] OnEntityKilled - A hero was killed by a Necro Reaper's Scythe. Increasing respawn time!")
-					-- local respawn_extra_time = killing_ability:GetLevelSpecialValueFor("respawn_constant", killing_ability:GetLevel() - 1)
-					-- respawn_time = respawn_time + respawn_extra_time
-				-- end
+			-- if killing_ability:GetAbilityName() == "necrolyte_reapers_scythe" then
+			-- DebugPrint("[DEBUG] OnEntityKilled - A hero was killed by a Necro Reaper's Scythe. Increasing respawn time!")
+			-- local respawn_extra_time = killing_ability:GetLevelSpecialValueFor("respawn_constant", killing_ability:GetLevel() - 1)
+			-- respawn_time = respawn_time + respawn_extra_time
+			-- end
 			-- end
 
 			-- Killer is a neutral creep
@@ -111,7 +111,7 @@ function bloodbound:OnEntityKilled(keys)
 
 			-- Capping Respawn Time (MAX respawn time)
 			if respawn_time > MAX_RESPAWN_TIME then
-				DebugPrint("[DEBUG] OnEntityKilled - Reducing respawn time of "..killed_unit:GetUnitName().." because it was too long.")
+				DebugPrint("[DEBUG] OnEntityKilled - Reducing respawn time of " .. killed_unit:GetUnitName() .. " because it was too long.")
 				respawn_time = MAX_RESPAWN_TIME
 			end
 

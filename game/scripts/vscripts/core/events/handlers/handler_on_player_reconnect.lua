@@ -19,7 +19,7 @@ function bloodbound:OnPlayerReconnect(keys)
 				PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection()
 				PlayerResource:SetHasRandomed(playerID)
 				PlayerResource:SetCanRepick(playerID, false)
-				DebugPrint("[DEBUG] OnPlayerReconnect - Randomed a hero for a player ID "..playerID.." that reconnected.")
+				DebugPrint("[DEBUG] OnPlayerReconnect - Randomed a hero for a player ID " .. playerID .. " that reconnected.")
 			end
 		end
 	end

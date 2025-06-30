@@ -11,7 +11,7 @@ function bloodbound:OnLastHit(keys)
 	local playerID = keys.PlayerID
 
 	-- Killed unit (creep, hero, tower etc.)
-	local killed_entity 
+	local killed_entity
 	if keys.EntKilled then
 		killed_entity = EntIndexToHScript(keys.EntKilled)
 	end
