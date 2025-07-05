@@ -1,4 +1,3 @@
-
 require('core.events.event_handler')
 require('core.game.game_rules_config')
 require('core.game.game_mode_config')
@@ -7,6 +6,7 @@ require('core.filters.filter_config')
 require('utils.custom_random')
 require('components.component_loader')
 require('settings.game_settings')
+require("core.systems.wave_system.wave_manager")
 
 --[[
   This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
@@ -26,13 +26,30 @@ function bloodbound:OnGameInProgress()
 
 	-- If the day/night is not changed at 00:00, the following line is needed:
 	GameRules:SetTimeOfDay(0.251)
+
+	-- Список точек спавна
+	local spawns = {
+		Entities:FindByName(nil, "spawn_point_1"),
+		Entities:FindByName(nil, "spawn_point_2")
+	}
+
+	local goal = Entities:FindByName(nil, "goal_entity")
+
+	WaveManager:init({
+		spawnPoints = spawns,
+		goalEntity = goal,
+		spawnInterval = 20, -- интервал между волнами
+		sideCount = 2 -- по скольким точкам спавнить
+	})
+
+	WaveManager:start()
 end
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
 function bloodbound:InitGameMode()
 	CustomRandom.generateSeed()
-	
+
 	ModifierConfig.init()
 	GameRulesConfig.init()
 	GameModeConfig.init()

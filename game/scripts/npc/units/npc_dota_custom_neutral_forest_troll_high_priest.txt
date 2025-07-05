@@ -5,7 +5,7 @@
         // General
         //----------------------------------------------------------------
         "Model"                  "models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_high_priest.vmdl"		// Model.
-        "BaseClass"              "npc_dota_creep_neutral"
+        "BaseClass"              "npc_dota_creep_lane"
         "SoundSet"               "n_creep_Ranged"
         "Level"                  "2"
         "ModelScale"             ".90"
