@@ -8,7 +8,7 @@
         "AttackDamageMin"      "100"
         "AttackDamageMax"      "300"
         "MovementSpeed"        "450"
-        "StatusHealthRegen"    "25.0"
+        "StatusHealthRegen"    "100.0"
         "StatusManaRegen"      "10"
         "BaseAttackSpeed"      "400"
 

@@ -3,7 +3,7 @@ if GameModeConfig == nil then
 end
 
 -- This function is called as the first player loads and sets up the game mode parameters
-function GameModeConfig.init()
+function GameModeConfig:init()
 	local gamemode = GameRules:GetGameModeEntity()
 
 	-- Set GameMode parameters

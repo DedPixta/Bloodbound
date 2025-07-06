@@ -2,7 +2,7 @@ if GameRulesConfig == nil then
     GameRulesConfig = class({})
 end
 
-function GameRulesConfig.init()
+function GameRulesConfig:init()
     DebugPrint("[DEBUG] Starting to load Game Rules.")
 
     -- Setup rules

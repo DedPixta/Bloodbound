@@ -26,22 +26,6 @@ function bloodbound:OnGameInProgress()
 
 	-- If the day/night is not changed at 00:00, the following line is needed:
 	GameRules:SetTimeOfDay(0.251)
-
-	-- Список точек спавна
-	local spawns = {
-		Entities:FindByName(nil, "spawn_point_1"),
-		Entities:FindByName(nil, "spawn_point_2")
-	}
-
-	local goal = Entities:FindByName(nil, "goal_entity")
-
-	WaveManager:init({
-		spawnPoints = spawns,
-		goalEntity = goal,
-		spawnInterval = 20, -- интервал между волнами
-		sideCount = 2 -- по скольким точкам спавнить
-	})
-
 	WaveManager:start()
 end
 
@@ -50,16 +34,15 @@ end
 function bloodbound:InitGameMode()
 	CustomRandom.generateSeed()
 
-	ModifierConfig.init()
-	GameRulesConfig.init()
-	GameModeConfig.init()
-	ComponentLoader.init()
+	ModifierConfig:init()
+	GameRulesConfig:init()
+	GameModeConfig:init()
+	ComponentLoader:init()
 
 	FilterConfig.init(self)
 	EventHandler.init(self)
 
 	print("[DEBUG] initialized.")
-	DebugPrint("[DEBUG] Done loading the game mode!\n\n")
 
 	-- Increase/decrease maximum item limit per hero
 	Convars:SetInt('dota_max_physical_items_purchase_limit', 64)
