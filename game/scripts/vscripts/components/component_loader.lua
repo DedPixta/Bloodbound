@@ -2,7 +2,7 @@ if ComponentLoader == nil then
     ComponentLoader = class({})
 end
 
-function ComponentLoader:init()
+function ComponentLoader.init()
     if USE_CUSTOM_ROSHAN then
         require('components.roshan.init')
     end

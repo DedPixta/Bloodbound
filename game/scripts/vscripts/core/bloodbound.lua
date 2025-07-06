@@ -34,10 +34,10 @@ end
 function bloodbound:InitGameMode()
 	CustomRandom.generateSeed()
 
-	ModifierConfig:init()
-	GameRulesConfig:init()
-	GameModeConfig:init()
-	ComponentLoader:init()
+	ModifierConfig.init()
+	GameRulesConfig.init()
+	GameModeConfig.init()
+	ComponentLoader.init()
 
 	FilterConfig.init(self)
 	EventHandler.init(self)
