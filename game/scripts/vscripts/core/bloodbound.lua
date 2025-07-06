@@ -1,4 +1,3 @@
-
 require('core.events.event_handler')
 require('core.game.game_rules_config')
 require('core.game.game_mode_config')
@@ -7,6 +6,7 @@ require('core.filters.filter_config')
 require('utils.custom_random')
 require('components.component_loader')
 require('settings.game_settings')
+require("core.systems.wave_system.wave_manager")
 
 --[[
   This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
@@ -26,13 +26,14 @@ function bloodbound:OnGameInProgress()
 
 	-- If the day/night is not changed at 00:00, the following line is needed:
 	GameRules:SetTimeOfDay(0.251)
+	WaveManager:start()
 end
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
 function bloodbound:InitGameMode()
 	CustomRandom.generateSeed()
-	
+
 	ModifierConfig.init()
 	GameRulesConfig.init()
 	GameModeConfig.init()
@@ -42,7 +43,6 @@ function bloodbound:InitGameMode()
 	EventHandler.init(self)
 
 	print("[DEBUG] initialized.")
-	DebugPrint("[DEBUG] Done loading the game mode!\n\n")
 
 	-- Increase/decrease maximum item limit per hero
 	Convars:SetInt('dota_max_physical_items_purchase_limit', 64)

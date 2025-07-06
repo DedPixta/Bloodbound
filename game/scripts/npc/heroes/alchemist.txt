@@ -1,8 +1,16 @@
 "DOTAHeroes"
 {
-	"npc_dota_hero_alchemist"
-	{
-		"VisionDaytimeRange" 	"10000"
-		"VisionNighttimeRange" 	"10000"
-	}
+    "npc_dota_hero_alchemist"
+    {
+        "VisionDaytimeRange"   "10000"
+        "VisionNighttimeRange" "10000"
+        "ArmorPhysical"        "25"
+        "AttackDamageMin"      "100"
+        "AttackDamageMax"      "300"
+        "MovementSpeed"        "450"
+        "StatusHealthRegen"    "100.0"
+        "StatusManaRegen"      "10"
+        "BaseAttackSpeed"      "400"
+
+    }
 }

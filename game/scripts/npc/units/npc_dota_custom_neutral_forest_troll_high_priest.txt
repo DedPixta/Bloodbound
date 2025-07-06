@@ -5,7 +5,7 @@
         // General
         //----------------------------------------------------------------
         "Model"                  "models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_high_priest.vmdl"		// Model.
-        "BaseClass"              "npc_dota_creep_neutral"
+        "BaseClass"              "npc_dota_creature"
         "SoundSet"               "n_creep_Ranged"
         "Level"                  "2"
         "ModelScale"             ".90"
@@ -67,7 +67,7 @@
         
         // Team
         //----------------------------------------------------------------
-        "TeamName"               "DOTA_TEAM_NEUTRALS"		// Team name.
+        "TeamName"               "DOTA_TEAM_BADGUYS"		// Team name.
         "UnitRelationshipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
     }
 }
