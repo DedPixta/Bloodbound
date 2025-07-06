@@ -20,7 +20,13 @@ WaveData.waves = {
             { count = 10, name = "npc_dota_custom_neutral_giant_wolf" },
             { count = 5,  name = "npc_dota_custom_neutral_alpha_wolf" }
         }
-    }
+    },
+    [4] = {
+        units = {
+            { count = 5,  name = "npc_dota_custom_neutral_ogre_magi" },
+            { count = 10, name = "npc_dota_custom_neutral_ogre_mauler" }
+        }
+    },
 }
 
 function WaveData:getWave(number)

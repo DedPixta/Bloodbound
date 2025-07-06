@@ -5,7 +5,7 @@
         // General
         //----------------------------------------------------------------
         "Model"                  "models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl"		// Model.
-        "BaseClass"              "npc_dota_creep_lane"
+        "BaseClass"              "npc_dota_creature"
         "SoundSet"               "n_creep_Melee"
         "Level"                  "3"
         "ModelScale"             ".90"
@@ -67,7 +67,7 @@
         
         // Team
         //----------------------------------------------------------------
-        "TeamName"               "DOTA_TEAM_NEUTRALS"		// Team name.
+        "TeamName"               "DOTA_TEAM_BADGUYS"		// Team name.
         "UnitRelationshipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
     }
 }
